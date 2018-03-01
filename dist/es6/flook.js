@@ -1,1 +1,1 @@
-export { TableView } from './Layouts/TableView';
+export { ListView } from './Layouts/ListView';

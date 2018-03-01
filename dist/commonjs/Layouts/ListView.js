@@ -1,5 +1,11 @@
-import * as React from "react";
-export class TableView extends React.Component {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = require("react");
+class ListView extends React.Component {
+    constructor() {
+        super(...arguments);
+        this.name = this.constructor.name.charAt(0).toLowerCase() + this.constructor.name.slice(1);
+    }
     numberOfSection() {
         return 0;
     }
@@ -7,10 +13,10 @@ export class TableView extends React.Component {
         return 0;
     }
     row(inSection, atIndex) {
-        return (React.createElement("div", null, atIndex));
+        return "";
     }
     sectionHeader(forSection) {
-        return (React.createElement("div", null, forSection));
+        return "";
     }
     render() {
         const layout = [];
@@ -20,6 +26,7 @@ export class TableView extends React.Component {
                 layout.push(this.row(sectionIndex, rowIndex));
             }
         }
-        return (React.createElement("div", { className: this.constructor.name, style: this.props.style }, layout));
+        return (React.createElement("div", { className: this.name, style: this.props.style }, layout));
     }
 }
+exports.ListView = ListView;

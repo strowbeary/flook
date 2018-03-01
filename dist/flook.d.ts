@@ -1,1 +1,1 @@
-export { TableView, TableViewProtocol } from './Layouts/TableView';
+export { ListView, ListViewProtocol } from './Layouts/ListView';

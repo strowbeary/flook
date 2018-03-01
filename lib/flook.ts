@@ -1,6 +1,5 @@
-
 export {
-    TableView,
-    TableViewProtocol
+    ListView,
+    ListViewProtocol
 }
-from './Layouts/TableView';
+from './Layouts/ListView';
