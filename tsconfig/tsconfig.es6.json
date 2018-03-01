@@ -8,7 +8,7 @@
       "strict": true
     },
     "files": [
-      "../lib/DependencyInjector.ts"
+      "../lib/flook.ts"
     ]
 }
 
