@@ -1,26 +1,36 @@
 import * as React from "react";
 
 export interface TableViewProtocol {
-    numberOfSection(): number
-    numberOfRowInSection(): number
-    row(inSection: number, atIndex: number): React.ReactChild
-    sectionHeader(atIndex: number) : React.ReactChild
+    numberOfSection(): number;
+    numberOfRowInSection(): number;
+    row(inSection: number, atIndex: number): React.ReactChild;
+    sectionHeader(atIndex: number): React.ReactChild;
 }
 
-interface TableViewProps {
-    delegate: TableViewProtocol
-}
+export class TableView extends React.Component<{}, {}> implements TableViewProtocol{
+    numberOfSection(): number {
+        return 0;
+    }
 
-export class TableView extends React.Component<TableViewProps>{
+    numberOfRowInSection(): number {
+        return 0;
+    }
 
-    private delegate: TableViewProtocol = this.props.delegate;
+    row(inSection: number, atIndex: number): React.ReactChild {
+        return (<div>{atIndex}</div>);
+    }
 
-    render() {
-        let layout: React.ReactChild[] = [];
-        for (let sectionIndex = 0; sectionIndex < this.delegate.numberOfSection(); sectionIndex += 1) {
-            layout.push(this.delegate.sectionHeader(sectionIndex));
-            for (let rowIndex = 0; rowIndex < this.delegate.numberOfRowInSection(); rowIndex += 1) {
-                layout.push(this.delegate.row(sectionIndex, rowIndex));
+    sectionHeader(atIndex: number): React.ReactChild {
+        return (<div>{atIndex}</div>);
+    }
+
+
+    public render() {
+        const layout: React.ReactChild[] = [];
+        for (let sectionIndex = 0; sectionIndex < this.numberOfSection(); sectionIndex += 1) {
+            layout.push(this.sectionHeader(sectionIndex));
+            for (let rowIndex = 0; rowIndex < this.numberOfRowInSection(); rowIndex += 1) {
+                layout.push(this.row(sectionIndex, rowIndex));
             }
         }
         return layout;

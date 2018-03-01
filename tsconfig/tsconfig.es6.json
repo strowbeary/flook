@@ -5,7 +5,9 @@
       "declaration": true,
       "declarationDir": "../dist",
       "outDir": "../dist/es6",
-      "strict": true
+      "strict": true,
+      "jsx": "react",
+      "experimentalDecorators": true
     },
     "files": [
       "../lib/flook.ts"

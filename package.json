@@ -6,7 +6,7 @@
   "module": "dist/es6/flook.js",
   "types": "dist/flook.d.ts",
   "scripts": {
-    "build": "tsc -p tsconfig/tsconfig.es6.json --jsx react; tsc -p tsconfig/tsconfig.commonjs.json --jsx react",
+    "build": "tsc -p tsconfig/tsconfig.es6.json; tsc -p tsconfig/tsconfig.commonjs.json",
     "prebublishOnly": "npm run test; npm run build",
     "test": "tslint -p tsconfig/tsconfig.es6.json ./**/*.ts --exclude './**/*.d.ts'"
   },
@@ -20,6 +20,8 @@
     "typescript": "^2.7.2"
   },
   "dependencies": {
+    "mobx": "^3.6.1",
+    "mobx-react": "^4.4.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   }

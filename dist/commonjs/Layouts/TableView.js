@@ -3,19 +3,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
 class TableView extends React.Component {
     numberOfSection() {
-        return 1;
+        return 0;
     }
     numberOfRowInSection() {
-        return 1;
-    }
-    sectionHeader(atIndex) {
-        return (React.createElement("h3", null, atIndex));
+        return 0;
     }
     row(inSection, atIndex) {
-        return (React.createElement("div", { className: "tableViewCell" }, atIndex));
+        return (React.createElement("div", null, atIndex));
+    }
+    sectionHeader(atIndex) {
+        return (React.createElement("div", null, atIndex));
     }
     render() {
-        let layout = [];
+        const layout = [];
         for (let sectionIndex = 0; sectionIndex < this.numberOfSection(); sectionIndex += 1) {
             layout.push(this.sectionHeader(sectionIndex));
             for (let rowIndex = 0; rowIndex < this.numberOfRowInSection(); rowIndex += 1) {
