@@ -1,0 +1,23 @@
+{
+  "name": "flook",
+  "version": "0.0.1",
+  "description": "React components lib",
+  "main": "dist/commonjs/flook.js",
+  "module": "dist/es6/flook.js",
+  "types": "dist/flook.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig/tsconfig.es6.json; tsc -p tsconfig/tsconfig.commonjs.json",
+    "prepublish": "npm run test; npm run build",
+    "test": "tslint -p tsconfig/tsconfig.es6.json ./**/*.ts --exclude './**/*.d.ts'"
+  },
+  "author": "StrowBeary<remicaillot5@gmail.com>",
+  "license": "MIT",
+  "repository": "https://github.com/strowbeary/flook",
+  "devDependencies": {
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.2"
+  },
+  "dependencies": {
+    "react": "^16.2.0"
+  }
+}
