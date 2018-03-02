@@ -1,9 +1,10 @@
 import * as React from "react";
 
+const rowOutOfViewport = new Set<number>();
 export interface ListViewProtocol {
     numberOfSection(): number;
     numberOfRow(inSection: number): number;
-    row(inSection: number, atIndex: number): React.ReactChild;
+    row(inSection: number, atIndex: number, refCall: ((el: any) => any)): React.ReactChild;
     sectionHeader?(atIndex: number): React.ReactChild;
 }
 export interface ListViewProps{
@@ -19,27 +20,42 @@ export class ListView extends React.Component<ListViewProps, {}> implements List
         return 0;
     }
 
-    row(inSection: number, atIndex: number): React.ReactChild {
+    row(inSection: number, atIndex: number, refCall: ((el: any) => any)): React.ReactChild {
         return "";
     }
 
     sectionHeader(forSection: number): React.ReactChild {
-        return "";
+        return <div>{forSection}</div>;
     }
 
-
     public render() {
-        const layout: React.ReactChild[] = [];
+        let layout: React.ReactChild[] = [];
         for (let sectionIndex = 0; sectionIndex < this.numberOfSection(); sectionIndex += 1) {
             layout.push(this.sectionHeader(sectionIndex));
             for (let rowIndex = 0; rowIndex < this.numberOfRow(sectionIndex); rowIndex += 1) {
-                layout.push(this.row(sectionIndex, rowIndex));
+                layout.push(this.row(sectionIndex, rowIndex, this.refCaller.bind(this)));
             }
         }
+
         return (
             <div className={this.name} style={this.props.style}>
                 {layout}
             </div>
         );
+    }
+
+    private scrollAndResizeHandler(el: any) {
+        if((el.getBoundingClientRect().top <= -el.clientHeight) || (el.getBoundingClientRect().top >= window.innerHeight)) {
+            rowOutOfViewport.add(parseInt(el.attributes["data-key"].value));
+            this.forceUpdate();
+        } else {
+            rowOutOfViewport.delete(parseInt(el.attributes["data-key"].value));
+            this.forceUpdate();
+        }
+    }
+
+
+    private refCaller(el: any): any{
+
     }
 }
