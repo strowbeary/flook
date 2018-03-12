@@ -3,11 +3,11 @@ import * as React from "react";
 export interface ListViewProtocol {
     numberOfSection(): number;
     numberOfRow(inSection: number): number;
-    row(inSection: number, atIndex: number, refCall: ((el: any) => any)): React.ReactElement<any>;
+    row(inSection: number, atIndex: number): React.ReactElement<any>;
     sectionHeader?(atIndex: number): React.ReactElement<any>;
 }
-export interface ListViewProps{
-    style?: object
+export interface ListViewProps {
+    style?: object;
 }
 
 export class ListView extends React.Component<ListViewProps, {}> implements ListViewProtocol{
@@ -38,20 +38,19 @@ export class ListView extends React.Component<ListViewProps, {}> implements List
             flexGrow: 1
         }
     };
-
-    numberOfSection(): number {
+    public numberOfSection(): number {
         return 0;
     }
 
-    numberOfRow(inSection: number): number {
+    public numberOfRow(inSection: number): number {
         return 0;
     }
 
-    row(inSection: number, atIndex: number, refCall: ((el: any) => any)): React.ReactElement<any> {
+    public row(inSection: number, atIndex: number): React.ReactElement<any> {
         return <span/>;
     }
 
-    sectionHeader(forSection: number): React.ReactElement<any> {
+    public sectionHeader(forSection: number): React.ReactElement<any> {
         return <span/>;
     }
 
@@ -60,7 +59,7 @@ export class ListView extends React.Component<ListViewProps, {}> implements List
             for (let sectionIndex = 0; sectionIndex < this.numberOfSection(); sectionIndex += 1) {
                 layout.push(this.sectionHeader(sectionIndex));
                 for (let rowIndex = 0; rowIndex < this.numberOfRow(sectionIndex); rowIndex += 1) {
-                    layout.push(this.row(sectionIndex, rowIndex, (el) => {}));
+                    layout.push(this.row(sectionIndex, rowIndex));
                 }
             }
             return (

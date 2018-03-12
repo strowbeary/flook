@@ -12,4 +12,4 @@ export {
 export {
     StackView,
     StackViewProps
-} from './Layouts/StackView';
+} from './Components/StackView';

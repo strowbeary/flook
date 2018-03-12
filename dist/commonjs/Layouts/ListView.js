@@ -37,7 +37,7 @@ class ListView extends React.Component {
     numberOfRow(inSection) {
         return 0;
     }
-    row(inSection, atIndex, refCall) {
+    row(inSection, atIndex) {
         return React.createElement("span", null);
     }
     sectionHeader(forSection) {
@@ -48,7 +48,7 @@ class ListView extends React.Component {
         for (let sectionIndex = 0; sectionIndex < this.numberOfSection(); sectionIndex += 1) {
             layout.push(this.sectionHeader(sectionIndex));
             for (let rowIndex = 0; rowIndex < this.numberOfRow(sectionIndex); rowIndex += 1) {
-                layout.push(this.row(sectionIndex, rowIndex, (el) => { }));
+                layout.push(this.row(sectionIndex, rowIndex));
             }
         }
         return (React.createElement("div", { className: this.name, style: Object.assign({}, this.props.style, this.style.listView) }, layout));
