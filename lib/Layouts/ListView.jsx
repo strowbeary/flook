@@ -49,7 +49,7 @@ var ListView = /** @class */ (function (_super) {
     ListView.prototype.numberOfRow = function (inSection) {
         return 0;
     };
-    ListView.prototype.row = function (inSection, atIndex, refCall) {
+    ListView.prototype.row = function (inSection, atIndex) {
         return <span />;
     };
     ListView.prototype.sectionHeader = function (forSection) {
@@ -60,7 +60,7 @@ var ListView = /** @class */ (function (_super) {
         for (var sectionIndex = 0; sectionIndex < this.numberOfSection(); sectionIndex += 1) {
             layout.push(this.sectionHeader(sectionIndex));
             for (var rowIndex = 0; rowIndex < this.numberOfRow(sectionIndex); rowIndex += 1) {
-                layout.push(this.row(sectionIndex, rowIndex, function (el) { }));
+                layout.push(this.row(sectionIndex, rowIndex));
             }
         }
         return (<div className={this.name} style={Object.assign({}, this.props.style, this.style.listView)}>

@@ -3,7 +3,7 @@ import * as React from "react";
 export interface ListViewProtocol {
     numberOfSection(): number;
     numberOfRow(inSection: number): number;
-    row(inSection: number, atIndex: number, refCall: ((el: any) => any)): React.ReactElement<any>;
+    row(inSection: number, atIndex: number): React.ReactElement<any>;
     sectionHeader?(atIndex: number): React.ReactElement<any>;
 }
 export interface ListViewProps {
@@ -21,7 +21,7 @@ export declare class ListView extends React.Component<ListViewProps, {}> impleme
     };
     numberOfSection(): number;
     numberOfRow(inSection: number): number;
-    row(inSection: number, atIndex: number, refCall: ((el: any) => any)): React.ReactElement<any>;
+    row(inSection: number, atIndex: number): React.ReactElement<any>;
     sectionHeader(forSection: number): React.ReactElement<any>;
     render(): JSX.Element;
 }
