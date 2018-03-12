@@ -18,21 +18,25 @@ export class ListView extends React.Component<ListViewProps, {}> implements List
             borderBottom: "1px solid #bbb",
             background: "#f9f9fa",
             display: "flex",
-            "align-items": "center",
+            alignItems: "center",
             padding: "10px 20px",
-            "font-weight": "bold",
-            "text-align": "left",
+            fontWeight: "bold",
+            textAlign: "left",
             fontSize: "12pt",
             position: "sticky",
             top: 0
         } as React.CSSProperties,
         row: {
             display: "flex",
-            "align-items": "center",
+            alignItems: "center",
             padding: "20px",
             borderBottom: "1px solid #bbb",
-            "text-align": "left"
-        } as React.CSSProperties
+            textAlign: "left"
+        } as React.CSSProperties,
+        listView: {
+            overflow: "auto",
+            flexGrow: 1
+        }
     };
 
     numberOfSection(): number {
@@ -52,7 +56,7 @@ export class ListView extends React.Component<ListViewProps, {}> implements List
     }
 
     public render() {
-            let layout: React.ReactChild[] = [];
+            const layout: React.ReactChild[] = [];
             for (let sectionIndex = 0; sectionIndex < this.numberOfSection(); sectionIndex += 1) {
                 layout.push(this.sectionHeader(sectionIndex));
                 for (let rowIndex = 0; rowIndex < this.numberOfRow(sectionIndex); rowIndex += 1) {
@@ -60,7 +64,7 @@ export class ListView extends React.Component<ListViewProps, {}> implements List
                 }
             }
             return (
-                <div className={this.name} style={this.props.style}>
+                <div className={this.name} style={Object.assign({}, this.props.style, this.style.listView)}>
                     {layout}
                 </div>
             );

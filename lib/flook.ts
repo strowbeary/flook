@@ -10,5 +10,6 @@ export {
 } from './Components/ToolbarView';
 
 export {
-    StackView
+    StackView,
+    StackViewProps
 } from './Layouts/StackView';

@@ -14,7 +14,10 @@ export declare class ListView extends React.Component<ListViewProps, {}> impleme
     protected style: {
         sectionHeader: React.CSSProperties;
         row: React.CSSProperties;
-        image: React.CSSProperties;
+        listView: {
+            overflow: string;
+            flexGrow: number;
+        };
     };
     numberOfSection(): number;
     numberOfRow(inSection: number): number;

@@ -5,7 +5,6 @@ export interface ToolbarViewProtocol {
     title: string;
     leftAction(): React.ReactElement<any>;
     rightAction(): React.ReactElement<any>;
-
 }
 
 export class ToolbarView extends React.Component implements ToolbarViewProtocol{
@@ -13,7 +12,7 @@ export class ToolbarView extends React.Component implements ToolbarViewProtocol{
     title: string = "";
     protected name: string = this.constructor.name.charAt(0).toLowerCase() + this.constructor.name.slice(1);
 
-    protected style= {
+    protected style = {
         toolbar: {
             display: "flex",
             flexDirection: "row",
