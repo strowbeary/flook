@@ -1,6 +1,6 @@
 {
   "name": "react-flook",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "React components lib",
   "main": "dist/commonjs/flook.js",
   "module": "dist/es6/flook.js",
