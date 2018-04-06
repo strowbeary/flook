@@ -3,13 +3,13 @@ import * as React from "react";
 
 export interface ToolbarViewProtocol {
     title: string;
-    leftAction(): React.ReactElement<any>;
-    rightAction(): React.ReactElement<any>;
+    leftView(): React.ReactElement<any>;
+    rightView(): React.ReactElement<any>;
 }
 
 export class ToolbarView extends React.Component implements ToolbarViewProtocol{
 
-    title: string = "";
+    public title: string = "";
     protected name: string = this.constructor.name.charAt(0).toLowerCase() + this.constructor.name.slice(1);
 
     protected style = {
@@ -26,24 +26,24 @@ export class ToolbarView extends React.Component implements ToolbarViewProtocol{
         } as React.CSSProperties
     };
 
-    leftAction(): React.ReactElement<any> {
+    public leftView(): React.ReactElement<any> {
         return <span />;
     }
 
-    rightAction(): React.ReactElement<any> {
+    public rightView(): React.ReactElement<any> {
         return <span />;
     }
 
-    render() {
+    public render() {
         return (
             <div className={this.name} style={this.style.toolbar}>
                 <h1>{this.title}</h1>
                 <div>
-                    {this.leftAction()}
+                    {this.leftView()}
                 </div>
 
                 <div>
-                    {this.rightAction()}
+                    {this.rightView()}
                 </div>
             </div>
         );

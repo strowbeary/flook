@@ -5,6 +5,7 @@ export interface ListViewProtocol {
     numberOfRow(inSection: number): number;
     row(inSection: number, atIndex: number): React.ReactElement<any>;
     sectionHeader?(atIndex: number): React.ReactElement<any>;
+    rowClick?(inSection: number, atIndex: number): void;
 }
 export interface ListViewProps {
     style?: object;
@@ -23,5 +24,6 @@ export declare class ListView extends React.Component<ListViewProps, {}> impleme
     numberOfRow(inSection: number): number;
     row(inSection: number, atIndex: number): React.ReactElement<any>;
     sectionHeader(forSection: number): React.ReactElement<any>;
+    rowClick(inSection: number, atIndex: number): void;
     render(): JSX.Element;
 }

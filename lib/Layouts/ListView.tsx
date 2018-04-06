@@ -5,6 +5,7 @@ export interface ListViewProtocol {
     numberOfRow(inSection: number): number;
     row(inSection: number, atIndex: number): React.ReactElement<any>;
     sectionHeader?(atIndex: number): React.ReactElement<any>;
+    rowClick?(inSection: number, atIndex: number): void;
 }
 export interface ListViewProps {
     style?: object;
@@ -54,12 +55,19 @@ export class ListView extends React.Component<ListViewProps, {}> implements List
         return <span/>;
     }
 
+    public rowClick(inSection: number, atIndex: number) { }
+
     public render() {
             const layout: React.ReactChild[] = [];
             for (let sectionIndex = 0; sectionIndex < this.numberOfSection(); sectionIndex += 1) {
                 layout.push(this.sectionHeader(sectionIndex));
                 for (let rowIndex = 0; rowIndex < this.numberOfRow(sectionIndex); rowIndex += 1) {
-                    layout.push(this.row(sectionIndex, rowIndex));
+                    layout.push((
+                        <div className={`${this.name}-row`} key={`row-${sectionIndex}-${rowIndex}`} style={this.style.row} onClick={() => this.rowClick(sectionIndex, rowIndex)}>
+                            {this.row(sectionIndex, rowIndex)}
+                        </div>
+
+                    ));
                 }
             }
             return (

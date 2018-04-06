@@ -19,16 +19,16 @@ export class ToolbarView extends React.Component {
             }
         };
     }
-    leftAction() {
+    leftView() {
         return React.createElement("span", null);
     }
-    rightAction() {
+    rightView() {
         return React.createElement("span", null);
     }
     render() {
         return (React.createElement("div", { className: this.name, style: this.style.toolbar },
             React.createElement("h1", null, this.title),
-            React.createElement("div", null, this.leftAction()),
-            React.createElement("div", null, this.rightAction())));
+            React.createElement("div", null, this.leftView()),
+            React.createElement("div", null, this.rightView())));
     }
 }

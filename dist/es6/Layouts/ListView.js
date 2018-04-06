@@ -41,12 +41,13 @@ export class ListView extends React.Component {
     sectionHeader(forSection) {
         return React.createElement("span", null);
     }
+    rowClick(inSection, atIndex) { }
     render() {
         const layout = [];
         for (let sectionIndex = 0; sectionIndex < this.numberOfSection(); sectionIndex += 1) {
             layout.push(this.sectionHeader(sectionIndex));
             for (let rowIndex = 0; rowIndex < this.numberOfRow(sectionIndex); rowIndex += 1) {
-                layout.push(this.row(sectionIndex, rowIndex));
+                layout.push((React.createElement("div", { className: `${this.name}-row`, key: `row-${sectionIndex}-${rowIndex}`, style: this.style.row, onClick: () => this.rowClick(sectionIndex, rowIndex) }, this.row(sectionIndex, rowIndex))));
             }
         }
         return (React.createElement("div", { className: this.name, style: Object.assign({}, this.props.style, this.style.listView) }, layout));

@@ -3,8 +3,8 @@
 import * as React from "react";
 export interface ToolbarViewProtocol {
     title: string;
-    leftAction(): React.ReactElement<any>;
-    rightAction(): React.ReactElement<any>;
+    leftView(): React.ReactElement<any>;
+    rightView(): React.ReactElement<any>;
 }
 export declare class ToolbarView extends React.Component implements ToolbarViewProtocol {
     title: string;
@@ -12,7 +12,7 @@ export declare class ToolbarView extends React.Component implements ToolbarViewP
     protected style: {
         toolbar: React.CSSProperties;
     };
-    leftAction(): React.ReactElement<any>;
-    rightAction(): React.ReactElement<any>;
+    leftView(): React.ReactElement<any>;
+    rightView(): React.ReactElement<any>;
     render(): JSX.Element;
 }
