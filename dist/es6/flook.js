@@ -1,3 +1,4 @@
 export { ListView } from './Layouts/ListView';
 export { ToolbarView } from './Components/ToolbarView';
-export { StackView } from './Components/StackView';
+export { StackView } from './Layouts/StackView';
+export { ImageView } from './Components/ImageView';

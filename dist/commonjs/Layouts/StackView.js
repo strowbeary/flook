@@ -25,7 +25,7 @@ class StackView extends React.Component {
         let separatorKey = 0;
         for (const child of this.props.children) {
             children.push(child);
-            if (this.props.separator !== void 0 && this.props.separator && separatorKey < this.props.children.length) {
+            if (this.props.separator !== void 0 && this.props.separator && separatorKey < this.props.children.length - 1) {
                 children.push(React.createElement("div", { key: separatorKey, style: this.style.separator }));
             }
             separatorKey += 1;

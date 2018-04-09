@@ -28,7 +28,7 @@ export class StackView extends React.Component<StackViewProps> {
         let separatorKey = 0;
         for (const child of this.props.children as Array<React.ReactElement<any>>) {
             children.push(child);
-            if (this.props.separator !== void 0 && this.props.separator && separatorKey < (this.props.children as Array<React.ReactElement<any>>).length) {
+            if (this.props.separator !== void 0 && this.props.separator && separatorKey < (this.props.children as Array<React.ReactElement<any>>).length - 1) {
                 children.push(<div key={separatorKey} style={this.style.separator}/>);
             }
             separatorKey += 1;

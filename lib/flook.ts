@@ -1,3 +1,5 @@
+import {ImageViewProps} from "./Components/ImageView";
+
 export {
     ListView,
     ListViewProtocol
@@ -12,4 +14,9 @@ export {
 export {
     StackView,
     StackViewProps
-} from './Components/StackView';
+} from './Layouts/StackView';
+
+export {
+    ImageView,
+    ImageViewProps
+} from './Components/ImageView'

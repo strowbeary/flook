@@ -5,31 +5,6 @@ class ListView extends React.Component {
     constructor() {
         super(...arguments);
         this.name = this.constructor.name.charAt(0).toLowerCase() + this.constructor.name.slice(1);
-        this.style = {
-            sectionHeader: {
-                borderBottom: "1px solid #bbb",
-                background: "#f9f9fa",
-                display: "flex",
-                alignItems: "center",
-                padding: "10px 20px",
-                fontWeight: "bold",
-                textAlign: "left",
-                fontSize: "12pt",
-                position: "sticky",
-                top: 0
-            },
-            row: {
-                display: "flex",
-                alignItems: "center",
-                padding: "20px",
-                borderBottom: "1px solid #bbb",
-                textAlign: "left"
-            },
-            listView: {
-                overflow: "auto",
-                flexGrow: 1
-            }
-        };
     }
     numberOfSection() {
         return 0;
@@ -47,12 +22,12 @@ class ListView extends React.Component {
     render() {
         const layout = [];
         for (let sectionIndex = 0; sectionIndex < this.numberOfSection(); sectionIndex += 1) {
-            layout.push(this.sectionHeader(sectionIndex));
+            layout.push((React.createElement("div", { className: "sectionHeader", key: `section-${sectionIndex}` }, this.sectionHeader(sectionIndex))));
             for (let rowIndex = 0; rowIndex < this.numberOfRow(sectionIndex); rowIndex += 1) {
-                layout.push((React.createElement("div", { className: `${this.name}-row`, key: `row-${sectionIndex}-${rowIndex}`, style: this.style.row, onClick: () => this.rowClick(sectionIndex, rowIndex) }, this.row(sectionIndex, rowIndex))));
+                layout.push((React.createElement("div", { className: "row", key: `row-${sectionIndex}-${rowIndex}`, onClick: () => this.rowClick(sectionIndex, rowIndex) }, this.row(sectionIndex, rowIndex))));
             }
         }
-        return (React.createElement("div", { className: this.name, style: Object.assign({}, this.props.style, this.style.listView) }, layout));
+        return (React.createElement("div", { className: this.name + " listView" }, layout));
     }
 }
 exports.ListView = ListView;

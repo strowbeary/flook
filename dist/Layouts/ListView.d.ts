@@ -12,14 +12,6 @@ export interface ListViewProps {
 }
 export declare class ListView extends React.Component<ListViewProps, {}> implements ListViewProtocol {
     protected name: string;
-    protected style: {
-        sectionHeader: React.CSSProperties;
-        row: React.CSSProperties;
-        listView: {
-            overflow: string;
-            flexGrow: number;
-        };
-    };
     numberOfSection(): number;
     numberOfRow(inSection: number): number;
     row(inSection: number, atIndex: number): React.ReactElement<any>;
