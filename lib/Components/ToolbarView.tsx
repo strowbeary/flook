@@ -1,6 +1,6 @@
 /** @type {{search: React.CSSProperties}} */
 import * as React from "react";
-
+import {Text} from "./Text"
 export interface ToolbarViewProtocol {
     title: string;
     leftView(): React.ReactElement<any>;
@@ -19,8 +19,6 @@ export class ToolbarView extends React.Component implements ToolbarViewProtocol{
             alignItems: "center",
             background: "#f9f9fa",
             padding: "10px 20px",
-            textAlign: "left",
-            fontSize: "14pt",
             position: "sticky",
             top: 0
         } as React.CSSProperties
@@ -37,7 +35,7 @@ export class ToolbarView extends React.Component implements ToolbarViewProtocol{
     public render() {
         return (
             <div className={this.name} style={this.style.toolbar}>
-                <h1>{this.title}</h1>
+                <Text.heading>{this.title}</Text.heading>
                 <div>
                     {this.leftView()}
                 </div>

@@ -1,5 +1,4 @@
 import * as React from "react";
-
 export interface ListViewProtocol {
     numberOfSection(): number;
     numberOfRow(inSection: number): number;
@@ -45,7 +44,6 @@ export class ListView extends React.Component<ListViewProps, {}> implements List
                         <div className="row" key={`row-${sectionIndex}-${rowIndex}`} onClick={() => this.rowClick(sectionIndex, rowIndex)}>
                             {this.row(sectionIndex, rowIndex)}
                         </div>
-
                     ));
                 }
             }

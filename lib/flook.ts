@@ -1,10 +1,7 @@
-import {ImageViewProps} from "./Components/ImageView";
-
 export {
     ListView,
     ListViewProtocol
-}
-from './Layouts/ListView';
+} from './Layouts/ListView';
 
 export {
     ToolbarView,
@@ -19,4 +16,8 @@ export {
 export {
     ImageView,
     ImageViewProps
-} from './Components/ImageView'
+} from './Components/ImageView';
+
+export {
+    Text
+} from "./Components/Text";

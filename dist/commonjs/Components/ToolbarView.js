@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /** @type {{search: React.CSSProperties}} */
 const React = require("react");
+const Text_1 = require("./Text");
 class ToolbarView extends React.Component {
     constructor() {
         super(...arguments);
@@ -14,8 +15,6 @@ class ToolbarView extends React.Component {
                 alignItems: "center",
                 background: "#f9f9fa",
                 padding: "10px 20px",
-                textAlign: "left",
-                fontSize: "14pt",
                 position: "sticky",
                 top: 0
             }
@@ -29,7 +28,7 @@ class ToolbarView extends React.Component {
     }
     render() {
         return (React.createElement("div", { className: this.name, style: this.style.toolbar },
-            React.createElement("h1", null, this.title),
+            React.createElement(Text_1.Text.heading, null, this.title),
             React.createElement("div", null, this.leftView()),
             React.createElement("div", null, this.rightView())));
     }
