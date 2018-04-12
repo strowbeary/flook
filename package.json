@@ -1,6 +1,6 @@
 {
   "name": "react-flook",
-  "version": "0.0.6",
+  "version": "0.0.11",
   "description": "React components lib",
   "main": "dist/commonjs/flook.js",
   "module": "dist/es6/flook.js",
@@ -20,8 +20,6 @@
     "typescript": "^2.7.2"
   },
   "dependencies": {
-    "mobx": "^3.6.1",
-    "mobx-react": "^4.4.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   }

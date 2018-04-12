@@ -10,18 +10,17 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-/** @type {{search: React.CSSProperties}} */
 var React = require("react");
-var ToolbarView = /** @class */ (function (_super) {
-    __extends(ToolbarView, _super);
-    function ToolbarView() {
+var InputLine = /** @class */ (function (_super) {
+    __extends(InputLine, _super);
+    function InputLine() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    ToolbarView.prototype.render = function () {
-        return (<div className={"toolbar"}>
+    InputLine.prototype.render = function () {
+        return (<div className={"inputLine " + this.props.className} style={this.props.style}>
                 {this.props.children}
             </div>);
     };
-    return ToolbarView;
+    return InputLine;
 }(React.Component));
-exports.ToolbarView = ToolbarView;
+exports.InputLine = InputLine;

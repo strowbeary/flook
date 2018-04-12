@@ -1,43 +1,18 @@
 import * as React from "react";
-
 export interface ListViewProtocol {
     numberOfSection(): number;
     numberOfRow(inSection: number): number;
     row(inSection: number, atIndex: number): React.ReactElement<any>;
     sectionHeader?(atIndex: number): React.ReactElement<any>;
+    rowClick?(inSection: number, atIndex: number): void;
 }
 export interface ListViewProps {
     style?: object;
+    className?: string;
 }
 
-export class ListView extends React.Component<ListViewProps, {}> implements ListViewProtocol{
-    protected name: string = this.constructor.name.charAt(0).toLowerCase() + this.constructor.name.slice(1);
+export class ListView extends React.Component<ListViewProps, {}> implements ListViewProtocol {
 
-    protected style = {
-        sectionHeader: {
-            borderBottom: "1px solid #bbb",
-            background: "#f9f9fa",
-            display: "flex",
-            alignItems: "center",
-            padding: "10px 20px",
-            fontWeight: "bold",
-            textAlign: "left",
-            fontSize: "12pt",
-            position: "sticky",
-            top: 0
-        } as React.CSSProperties,
-        row: {
-            display: "flex",
-            alignItems: "center",
-            padding: "20px",
-            borderBottom: "1px solid #bbb",
-            textAlign: "left"
-        } as React.CSSProperties,
-        listView: {
-            overflow: "auto",
-            flexGrow: 1
-        }
-    };
     public numberOfSection(): number {
         return 0;
     }
@@ -54,16 +29,26 @@ export class ListView extends React.Component<ListViewProps, {}> implements List
         return <span/>;
     }
 
+    public rowClick(inSection: number, atIndex: number) { }
+
     public render() {
             const layout: React.ReactChild[] = [];
             for (let sectionIndex = 0; sectionIndex < this.numberOfSection(); sectionIndex += 1) {
-                layout.push(this.sectionHeader(sectionIndex));
+                layout.push((
+                    <div className="sectionHeader" key={`section-${sectionIndex}`}>
+                        {this.sectionHeader(sectionIndex)}
+                    </div>
+                ));
                 for (let rowIndex = 0; rowIndex < this.numberOfRow(sectionIndex); rowIndex += 1) {
-                    layout.push(this.row(sectionIndex, rowIndex));
+                    layout.push((
+                        <div className="row" key={`row-${sectionIndex}-${rowIndex}`} onClickCapture={() => this.rowClick(sectionIndex, rowIndex)}>
+                            {this.row(sectionIndex, rowIndex)}
+                        </div>
+                    ));
                 }
             }
             return (
-                <div className={this.name} style={Object.assign({}, this.props.style, this.style.listView)}>
+                <div className={"listView " + this.props.className}>
                     {layout}
                 </div>
             );
