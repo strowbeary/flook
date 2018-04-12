@@ -10,3 +10,7 @@ var ImageView_1 = require("./Components/ImageView");
 exports.ImageView = ImageView_1.ImageView;
 var Text_1 = require("./Components/Text");
 exports.Text = Text_1.Text;
+var InputLine_1 = require("./Layouts/InputLine");
+exports.InputLine = InputLine_1.InputLine;
+var Macaroon_1 = require("./Components/Macaroon");
+exports.Macaroon = Macaroon_1.Macaroon;

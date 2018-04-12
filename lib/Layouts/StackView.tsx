@@ -3,38 +3,25 @@ import * as React from "react";
 export interface StackViewProps {
     horizontal?: boolean;
     separator?: boolean;
+    style?: React.CSSProperties;
+    className?: string;
+    children: React.ReactChildren;
 }
 
 export class StackView extends React.Component<StackViewProps> {
 
-    protected style = {
-        separator: {
-            borderBottom: "1px solid #bbb",
-            borderLeft: "1px solid #bbb",
-            height: (this.props.horizontal !== void 0 && this.props.horizontal) ? "100%" : 0,
-            width: (this.props.horizontal !== void 0 && this.props.horizontal) ? 0 : "100%"
-        } as React.CSSProperties,
-        stackView: {
-            display: "flex",
-            flexDirection: (this.props.horizontal !== void 0 && this.props.horizontal) ? "row" : "column",
-            alignItems: "stretch",
-            overflow: "hidden",
-            flexGrow: 1
-        } as React.CSSProperties
-    };
 
     public render() {
-        const children: Array<React.ReactElement<any>> = [];
-        let separatorKey = 0;
-        for (const child of this.props.children as Array<React.ReactElement<any>>) {
-            children.push(child);
-            if (this.props.separator !== void 0 && this.props.separator && separatorKey < (this.props.children as Array<React.ReactElement<any>>).length - 1) {
-                children.push(<div key={separatorKey} style={this.style.separator}/>);
-            }
-            separatorKey += 1;
-        }
+        const disposition =  (this.props.horizontal !== void 0 && this.props.horizontal) ? "row" : "column";
+        const children = React.Children.map(this.props.children, (child, separatorKey) => {
+            const separator = this.props.separator !== void 0 && this.props.separator && separatorKey < (this.props.children as Array<React.ReactElement<any>>).length - 1;
+            return [
+                child,
+                separator ? <div key={separatorKey} className={"separator"}/> : null
+            ];
+        });
         return (
-            <div style={this.style.stackView}>
+            <div className={`stackView ${disposition} ${this.props.className}`} style={this.props.style}>
                 {children}
             </div>
         );

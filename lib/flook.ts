@@ -1,3 +1,5 @@
+import {MacaroonProps} from "./Components/Macaroon";
+
 export {
     ListView,
     ListViewProtocol
@@ -5,7 +7,7 @@ export {
 
 export {
     ToolbarView,
-    ToolbarViewProtocol
+    ToolbarViewProps
 } from './Components/ToolbarView';
 
 export {
@@ -21,3 +23,13 @@ export {
 export {
     Text
 } from "./Components/Text";
+
+export {
+    InputLine,
+    InputLineProps
+} from "./Layouts/InputLine";
+
+export {
+    Macaroon,
+    MacaroonProps
+} from "./Components/Macaroon";

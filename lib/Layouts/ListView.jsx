@@ -14,34 +14,7 @@ var React = require("react");
 var ListView = /** @class */ (function (_super) {
     __extends(ListView, _super);
     function ListView() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.name = _this.constructor.name.charAt(0).toLowerCase() + _this.constructor.name.slice(1);
-        _this.style = {
-            sectionHeader: {
-                borderBottom: "1px solid #bbb",
-                background: "#f9f9fa",
-                display: "flex",
-                alignItems: "center",
-                padding: "10px 20px",
-                fontWeight: "bold",
-                textAlign: "left",
-                fontSize: "12pt",
-                position: "sticky",
-                top: 0
-            },
-            row: {
-                display: "flex",
-                alignItems: "center",
-                padding: "20px",
-                borderBottom: "1px solid #bbb",
-                textAlign: "left"
-            },
-            listView: {
-                overflow: "auto",
-                flexGrow: 1
-            }
-        };
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     ListView.prototype.numberOfSection = function () {
         return 0;
@@ -55,15 +28,28 @@ var ListView = /** @class */ (function (_super) {
     ListView.prototype.sectionHeader = function (forSection) {
         return <span />;
     };
+    ListView.prototype.rowClick = function (inSection, atIndex) { };
     ListView.prototype.render = function () {
+        var _this = this;
         var layout = [];
-        for (var sectionIndex = 0; sectionIndex < this.numberOfSection(); sectionIndex += 1) {
-            layout.push(this.sectionHeader(sectionIndex));
-            for (var rowIndex = 0; rowIndex < this.numberOfRow(sectionIndex); rowIndex += 1) {
-                layout.push(this.row(sectionIndex, rowIndex));
+        var _loop_1 = function (sectionIndex) {
+            layout.push((<div className="sectionHeader" key={"section-" + sectionIndex}>
+                        {this_1.sectionHeader(sectionIndex)}
+                    </div>));
+            var _loop_2 = function (rowIndex) {
+                layout.push((<div className="row" key={"row-" + sectionIndex + "-" + rowIndex} onClickCapture={function () { return _this.rowClick(sectionIndex, rowIndex); }}>
+                            {this_1.row(sectionIndex, rowIndex)}
+                        </div>));
+            };
+            for (var rowIndex = 0; rowIndex < this_1.numberOfRow(sectionIndex); rowIndex += 1) {
+                _loop_2(rowIndex);
             }
+        };
+        var this_1 = this;
+        for (var sectionIndex = 0; sectionIndex < this.numberOfSection(); sectionIndex += 1) {
+            _loop_1(sectionIndex);
         }
-        return (<div className={this.name} style={Object.assign({}, this.props.style, this.style.listView)}>
+        return (<div className={"listView " + this.props.className}>
                     {layout}
                 </div>);
     };

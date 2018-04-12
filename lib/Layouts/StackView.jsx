@@ -14,36 +14,19 @@ var React = require("react");
 var StackView = /** @class */ (function (_super) {
     __extends(StackView, _super);
     function StackView() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.style = {
-            separator: {
-                borderBottom: "1px solid #bbb",
-                borderLeft: "1px solid #bbb",
-                height: (_this.props.horizontal !== void 0 && _this.props.horizontal) ? "100%" : 0,
-                width: (_this.props.horizontal !== void 0 && _this.props.horizontal) ? 0 : "100%"
-            },
-            stackView: {
-                display: "flex",
-                flexDirection: (_this.props.horizontal !== void 0 && _this.props.horizontal) ? "row" : "column",
-                alignItems: "stretch",
-                overflow: "hidden",
-                flexGrow: 1
-            }
-        };
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     StackView.prototype.render = function () {
-        var children = [];
-        var separatorKey = 0;
-        for (var _i = 0, _a = this.props.children; _i < _a.length; _i++) {
-            var child = _a[_i];
-            children.push(child);
-            if (this.props.separator !== void 0 && this.props.separator && separatorKey < this.props.children.length) {
-                children.push(<div key={separatorKey} style={this.style.separator}/>);
-            }
-            separatorKey += 1;
-        }
-        return (<div style={this.style.stackView}>
+        var _this = this;
+        var disposition = (this.props.horizontal !== void 0 && this.props.horizontal) ? "row" : "column";
+        var children = React.Children.map(this.props.children, function (child, separatorKey) {
+            var separator = _this.props.separator !== void 0 && _this.props.separator && separatorKey < _this.props.children.length - 1;
+            return [
+                child,
+                separator ? <div key={separatorKey} className={"separator"}/> : null
+            ];
+        });
+        return (<div className={"stackView " + disposition + " " + this.props.className} style={this.props.style}>
                 {children}
             </div>);
     };

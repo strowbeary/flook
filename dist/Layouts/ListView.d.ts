@@ -9,9 +9,9 @@ export interface ListViewProtocol {
 }
 export interface ListViewProps {
     style?: object;
+    className?: string;
 }
 export declare class ListView extends React.Component<ListViewProps, {}> implements ListViewProtocol {
-    protected name: string;
     numberOfSection(): number;
     numberOfRow(inSection: number): number;
     row(inSection: number, atIndex: number): React.ReactElement<any>;

@@ -2,10 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
 class ListView extends React.Component {
-    constructor() {
-        super(...arguments);
-        this.name = this.constructor.name.charAt(0).toLowerCase() + this.constructor.name.slice(1);
-    }
     numberOfSection() {
         return 0;
     }
@@ -24,10 +20,10 @@ class ListView extends React.Component {
         for (let sectionIndex = 0; sectionIndex < this.numberOfSection(); sectionIndex += 1) {
             layout.push((React.createElement("div", { className: "sectionHeader", key: `section-${sectionIndex}` }, this.sectionHeader(sectionIndex))));
             for (let rowIndex = 0; rowIndex < this.numberOfRow(sectionIndex); rowIndex += 1) {
-                layout.push((React.createElement("div", { className: "row", key: `row-${sectionIndex}-${rowIndex}`, onClick: () => this.rowClick(sectionIndex, rowIndex) }, this.row(sectionIndex, rowIndex))));
+                layout.push((React.createElement("div", { className: "row", key: `row-${sectionIndex}-${rowIndex}`, onClickCapture: () => this.rowClick(sectionIndex, rowIndex) }, this.row(sectionIndex, rowIndex))));
             }
         }
-        return (React.createElement("div", { className: this.name + " listView" }, layout));
+        return (React.createElement("div", { className: "listView " + this.props.className }, layout));
     }
 }
 exports.ListView = ListView;

@@ -8,10 +8,10 @@ export interface ListViewProtocol {
 }
 export interface ListViewProps {
     style?: object;
+    className?: string;
 }
 
-export class ListView extends React.Component<ListViewProps, {}> implements ListViewProtocol{
-    protected name: string = this.constructor.name.charAt(0).toLowerCase() + this.constructor.name.slice(1);
+export class ListView extends React.Component<ListViewProps, {}> implements ListViewProtocol {
 
     public numberOfSection(): number {
         return 0;
@@ -41,14 +41,14 @@ export class ListView extends React.Component<ListViewProps, {}> implements List
                 ));
                 for (let rowIndex = 0; rowIndex < this.numberOfRow(sectionIndex); rowIndex += 1) {
                     layout.push((
-                        <div className="row" key={`row-${sectionIndex}-${rowIndex}`} onClick={() => this.rowClick(sectionIndex, rowIndex)}>
+                        <div className="row" key={`row-${sectionIndex}-${rowIndex}`} onClickCapture={() => this.rowClick(sectionIndex, rowIndex)}>
                             {this.row(sectionIndex, rowIndex)}
                         </div>
                     ));
                 }
             }
             return (
-                <div className={this.name + " listView"}>
+                <div className={"listView " + this.props.className}>
                     {layout}
                 </div>
             );

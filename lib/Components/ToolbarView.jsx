@@ -15,40 +15,11 @@ var React = require("react");
 var ToolbarView = /** @class */ (function (_super) {
     __extends(ToolbarView, _super);
     function ToolbarView() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.title = "";
-        _this.name = _this.constructor.name.charAt(0).toLowerCase() + _this.constructor.name.slice(1);
-        _this.style = {
-            toolbar: {
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                background: "#f9f9fa",
-                padding: "10px 20px",
-                textAlign: "left",
-                fontSize: "14pt",
-                position: "sticky",
-                top: 0
-            }
-        };
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-    ToolbarView.prototype.leftAction = function () {
-        return <span />;
-    };
-    ToolbarView.prototype.rightAction = function () {
-        return <span />;
-    };
     ToolbarView.prototype.render = function () {
-        return (<div className={this.name} style={this.style.toolbar}>
-                <h1>{this.title}</h1>
-                <div>
-                    {this.leftAction()}
-                </div>
-
-                <div>
-                    {this.rightAction()}
-                </div>
+        return (<div className={"toolbar"}>
+                {this.props.children}
             </div>);
     };
     return ToolbarView;
