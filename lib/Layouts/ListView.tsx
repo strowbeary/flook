@@ -41,7 +41,7 @@ export class ListView extends React.Component<ListViewProps, {}> implements List
                 ));
                 for (let rowIndex = 0; rowIndex < this.numberOfRow(sectionIndex); rowIndex += 1) {
                     layout.push((
-                        <div className="row" key={`row-${sectionIndex}-${rowIndex}`} onClickCapture={() => this.rowClick(sectionIndex, rowIndex)}>
+                        <div className="row" key={`row-${sectionIndex}-${rowIndex}`} onClick={(e) => {console.log(e); this.rowClick(sectionIndex, rowIndex)}}>
                             {this.row(sectionIndex, rowIndex)}
                         </div>
                     ));
