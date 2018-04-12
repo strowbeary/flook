@@ -19,9 +19,7 @@ class MyLayoutDelegate extends ListView implements ListViewProtocol {
     }
     row(inSection: number, atIndex: number) {
         return (
-            ````html
             <div>Row #{atIndex}</div>
-            ```
         )
     }
     sectionHeader(atIndex: number) {
