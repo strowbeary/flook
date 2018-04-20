@@ -33,3 +33,8 @@ export {
     Macaroon,
     MacaroonProps
 } from "./Components/Macaroon";
+
+export {
+    ScrollView,
+    ScrollViewProps
+} from "./Layouts/ScrollView";
